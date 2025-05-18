@@ -1,0 +1,4 @@
+<php
+function count($b,$s){
+   return $s+1;
+} 

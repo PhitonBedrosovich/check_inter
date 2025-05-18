@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Комментарии</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Комментарии</h1>
+        
+        <form method="POST" class="comment-form">
+            <textarea name="comment" required placeholder="Введите ваш комментарий..."></textarea>
+            <button type="submit">Отправить</button>
+        </form>
+
+        <div class="comments-list">
+            <?php if (empty($comments)): ?>
+                <p class="no-comments">Пока нет комментариев</p>
+            <?php else: ?>
+                <?php foreach ($comments as $comment): ?>
+                    <div class="comment">
+                        <p class="comment-text"><?= htmlspecialchars($comment['text']) ?></p>
+                        <p class="comment-date"><?= date('d.m.Y H:i', strtotime($comment['created_at'])) ?></p>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+    </div>
+</body>
+</html> 
